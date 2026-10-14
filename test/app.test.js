@@ -15,7 +15,7 @@ test('GET / returns application information', async (t) => {
 
   assert.equal(response.status, 200);
   assert.equal(body.application, 'OpsPulse API');
-  assert.equal(body.version, '1.0.0');
+  assert.equal(body.version, '1.1.0');
 });
 
 test('GET /health returns a healthy status', async (t) => {

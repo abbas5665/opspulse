@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
   res.status(200).json({
     application: 'OpsPulse API',
     message: 'Service is running',
-    version: '1.0.0'
+    version: '1.1.0'
   });
 });
 
