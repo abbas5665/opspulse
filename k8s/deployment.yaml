@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opspulse
+  labels:
+    app: opspulse
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: opspulse
+  template:
+    metadata:
+      labels:
+        app: opspulse
+    spec:
+      containers:
+        - name: opspulse
+          image: abbas5665/opspulse:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
